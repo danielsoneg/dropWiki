@@ -1,0 +1,18 @@
+$def with (items)
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset=utf-8 /> 
+<meta name="viewport" content="width=620" /> 
+<title>Index</title> 
+<link rel="stylesheet" href="/css/html5demos.css" type="text/css" /> 
+</head>
+<body>
+<ul>
+    $items
+
+$for i in items:
+    <li><a href="/$i">$i</a></li>
+</ul>
+</body>
+</html>
