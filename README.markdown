@@ -26,3 +26,7 @@ Currently, the script is extremely limited: It hosts text files from the parent 
 * To edit a file, just go to its page, click on the page text, and edit. The content is saved whenever the text loses focus.
 * To create a file, just go to a new page.
 * To link to a file, use: ```Name of the page```.
+
+Credits
+-------
+Uses web.py by Aaron Swartz

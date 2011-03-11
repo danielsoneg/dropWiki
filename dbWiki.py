@@ -12,6 +12,12 @@ class favicon:
         return ''
 
 class hello:
+    def __init__(self):
+        items = os.listdir('../')
+        items = filter(lambda i: i.endswith('.txt'), items)
+        items = [i[:-4] for i in items]
+        self.textFiles = items
+    
     def POST(self, name):
         if not name:
             return "Error!"
@@ -49,10 +55,7 @@ class hello:
         return render.page(name,text)
     
     def makeIndex(self):
-        items = os.listdir('../')
-        items = filter(lambda i: i.endswith('.txt'), items)
-        items = [i[:-4] for i in items]
-        return render.index(items)
+        return render.index(self.textFiles)
 
 if __name__ == "__main__":
     app.run()
