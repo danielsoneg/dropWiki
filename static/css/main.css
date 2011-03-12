@@ -1,0 +1,19 @@
+body {
+    background: #eee;
+}
+#editable {
+    display: block;
+    padding: 10px;
+    font-size: 18px;
+    color: #333;
+    white-space: pre-wrap;
+    overflow: scroll;
+    width: 700px;
+    min-height: 600px;
+    background: #fff;
+    margin: 0 auto;
+}
+
+a {
+    z-index: 3;
+}
