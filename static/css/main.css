@@ -17,3 +17,6 @@ body {
 a {
     z-index: 3;
 }
+a:hover {
+    cursor: pointer !important;
+}

@@ -3,12 +3,16 @@ $def with (title, text)
 <html lang="en"> 
 <head> 
 <meta charset=utf-8 /> 
-<meta name="viewport" content="width=620" /> 
+<meta name="viewport" content="width=700" /> 
 <title>$title</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type="text/javascript"></script>
 <script src="/static/js/jquery.edit.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/static/css/main.css" type="text/css"></link>
+<link rel="shortcut icon" href="/static/favicon.ico"></link>
 </head>
 <body>
-    <section id="editable" contenteditable="true">$text</section>
+    <header>$title</header>
+    <section id="message"></section>
+    <section id="editable" contenteditable="true">$:text</section>
 </body>
 </html>
