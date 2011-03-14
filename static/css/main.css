@@ -14,46 +14,29 @@ body {
 
 #filelist ul {
     list-style: none inside;
-    margin: 3px;
+    margin:0;
     background: none;
     padding: 0;
+    
 }
 
 #filelist ul li {
     width: 700px;
     margin: 0;
     border-bottom: 1px dashed #f0f0f0;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
 }
+
 
 #filelist ul li a {
     display:inline-block;
-    padding: 10px 10px 10px 10px;
-    margin: 0px 0px 0px 30px;
-    width: 550px;
+    padding: 10px;
+    width: 650px;
     height: 1.5em;
     font-size: 2em;
-}
-
-#filelist ul li span.del {
-    width: 30px;
-    text-align: right;
-    font-family: sans-serif;
-    font-weight: bold;
-    display:none;
-    color: #333;
-}
-
-#filelist ul li span.del span.confirm {
-    display: none;
-    font-size: .8em;
-}
-
-span.yes {
-    color: #696
-}
-
-span.no {
-    color: #966;
+    text-decoration: none;
+    color: #555;
 }
 
 .gradient {
@@ -62,6 +45,15 @@ span.no {
     background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #fefefe),color-stop(1, #fff)); /* Saf4+, Chrome */
     background-image: -webkit-linear-gradient(#fefefe, #fff); /* Chrome 10+, Saf6 */
     background-image: linear-gradient(top, #fefefe, #fff);
+}
+
+.gradient:hover {
+    background-color: #f3f3f3;
+    background-image: -moz-linear-gradient(top, #fefefe, #fff); /* FF3.6 */
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #fefefe),color-stop(1, #fff)); /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient(#fefefe, #fff); /* Chrome 10+, Saf6 */
+    background-image: linear-gradient(top, #fefefe, #fff);
+    background-image: none;
 }
 
 #editable {

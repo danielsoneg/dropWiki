@@ -5,14 +5,14 @@ Designed as a light, easy, platform-agnostic way to create and link between note
 
 Requirements
 ------------
-* Python 2.5 or better
+* Python 2.6 or better or Python 2.4 and simplejson
 * A browser that supports ContentEditable (I've tested with Chrome Dev. Caveat User.)
 
 Installation
 ------------
 1. Drop the dbWiki folder inside a folder containing text files.
 2. Run: `python dbWiki.py`
-3. open [http://localhost:8080]
+3. open [http://localhost:8080](http://localhost:8080)
 
 Configuration
 -------------
@@ -22,7 +22,7 @@ Usage
 -----
 Currently, the script is extremely limited: It hosts text files from the parent directory.
 
-* To access a file named "Hello World.txt", go to [http://localhost:8080/Hello World.txt]
+* To access a file named "Hello World.txt", go to [http://localhost:8080/Hello World](http://localhost:8080/Hello World)
 * To edit a file, just go to its page, click on the page text, and edit. The content is saved whenever the text loses focus.
 * To create a file, just go to a new page.
 * To link to a file, use: ```Name of the page```.

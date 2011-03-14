@@ -23,16 +23,6 @@ $(document).ready(function() {
     $('#message').click(function(){
        $(this).slideUp('200');
     });
-    $('li').mouseenter(function(){ 
-        $(this).children('span').first().show();
-        $(this).children('a').first().css('margin-left','10px');
-    });
-    $('li').mouseleave(function(){ 
-        $(this).children('span').first().hide();
-        $(this).children('a').first().css('margin-left','30px');
-    });
-    $('li span.del').click(function(){$(this).children('span.confirm').show('fast');});
-        
 });
 
 

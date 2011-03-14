@@ -16,15 +16,7 @@ $def with (items)
     <section id="filelist">
         <ul id="files">
         $for i in items:
-            <li class='gradient' id='$i'>
-                <span class='del' id='$1'>
-                    <span class='delbutton' id='$1'> X </span>
-                    <span class='confirm' id='$i'> Really? &nbsp 
-                        <span class="yes">Yes</span> &nbsp 
-                        <span class="no">No</span>
-                    </span>
-                </span>
-                <a href="/$i">$i</a></li>
+            <li class='gradient' id='$i'><a href="/$i">$i</a></li>
         </ul>
     </section>
 </body>

@@ -3,25 +3,29 @@
 
 import web
 import os
-import sys
 import re
-import json
-        
+try: import simplejson as json
+except ImportError: import json
+
 urls = (
-    '/favicon.ico','favicon',
-    '/(.*)', 'hello'
+    '/(.*)', 'dropWiki'
 )
 app = web.application(urls, globals())
 render = web.template.render('templates')
 
-class hello:
+class dropWiki:
+    #POST actions - all return JSON
     def POST(self, name):
         if not name:
-            return "Error!"
-        action = web.input()['action']
-        if action == 'write': return self.write(name)
-        elif action == 'rename': return self.rename(name)
-        
+            raise web.internalerror('500 Invalid Request')
+        try: 
+            action = web.input()['action']
+        except:
+            raise web.internalerror('500 No Action Specified')            
+        if hasattr(self, action):
+            return getattr(self, action)(name)
+        raise web.internalerror('500 Invalid Action')
+
     def write(self,name):
         content = web.input()['text']
         f = Files.getFile(name)
@@ -34,16 +38,18 @@ class hello:
         status = f.rename(newName)
         return status
     
+    #GET actions
     def GET(self, name):
         if not name:
             return self.makeIndex()
-        else:
-            f = Files.getFile(name)
-            content = f.read()
-            return render.page(name,content)
+        f = Files.getFile(name)
+        content = f.read()
+        return render.page(name,content)
     
     def makeIndex(self):
+        Files.updateItems()
         return render.index(Files.items)
+
     
 class FileModel(object):
     def __init__(self, path='../'):
@@ -72,9 +78,9 @@ class FileObject(object):
     
     def read(self):
         if self.name in self.items:
-            self._existing()
+            self.__existing()
         else:
-            self._new()
+            self.__new()
         return self.content
     
     def write(self, content):
@@ -86,7 +92,7 @@ class FileObject(object):
             return self._success(self.content)
         else:
             self.content = content
-            self._preSave()
+            self.__preSave()
             self.content = reUnlink.sub("`\\1`", self.content)
             self.handle = open(self.path,'w')
             try:
@@ -94,7 +100,7 @@ class FileObject(object):
             except OSError, e:
                 return self._error("Could not write file")
             self.handle.close()
-            self._addLinks()
+            self.__addLinks()
             return self._success(self.content)
     
     def rename(self, newName):
@@ -109,19 +115,18 @@ class FileObject(object):
         self.path = newPath
         return self._success("Renamed",{'oldURL':oldName,'newURL':newName});
     
-    def _existing(self):
+    def __existing(self):
         if os.path.isfile(self.path):
             self.handle = open(self.path)
             self.content = self.handle.read()
             self.handle.close()
-            self._addLinks()
+            self.__addLinks()
             self.handle.close()
-        """docstring for existing"""
-
-    def _new(self):
+    
+    def __new(self):
         self.content=""
-
-    def _preSave(self):
+    
+    def __preSave(self):
         """docstring for _preSave"""
         content = self.content
         content = content.replace('<br/>', '\n')
@@ -133,15 +138,15 @@ class FileObject(object):
         content = reUnspan.sub("\\1", content)
         self.content = content
 
-    def _addLinks(self):
+    def __addLinks(self):
         self.content = reLink.sub("<a href='\\1'>\\1</a>", self.content,0)
     
-    def _error(self,message,code={}):
+    def __error(self,message,code={}):
         code['Code'] = 0
         code['Message'] = message
         return json.dumps(code)
     
-    def _success(self,message,code={}):
+    def __success(self,message,code={}):
         code['Code'] = 1
         code['Message'] = message
         return json.dumps(code)
