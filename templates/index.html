@@ -3,17 +3,29 @@ $def with (items)
 <html lang="en"> 
 <head> 
 <meta charset=utf-8 /> 
-<meta name="viewport" content="width=620" /> 
 <title>Index</title> 
-<link rel="stylesheet" href="/css/html5demos.css" type="text/css" /> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type="text/javascript"></script>
+<script src="/static/js/jquery.edit.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/static/css/main.css" type="text/css"></link>
 <link rel="shortcut icon" href="/static/favicon.ico"></link>
 </head>
 <body>
-<ul>
-    $items
-
-$for i in items:
-    <li><a href="/$i">$i</a></li>
-</ul>
+    <header>
+        <h1>Index</h1>
+    </header>
+    <section id="filelist">
+        <ul id="files">
+        $for i in items:
+            <li class='gradient' id='$i'>
+                <span class='del' id='$1'>
+                    <span class='delbutton' id='$1'> X </span>
+                    <span class='confirm' id='$i'> Really? &nbsp 
+                        <span class="yes">Yes</span> &nbsp 
+                        <span class="no">No</span>
+                    </span>
+                </span>
+                <a href="/$i">$i</a></li>
+        </ul>
+    </section>
 </body>
 </html>
