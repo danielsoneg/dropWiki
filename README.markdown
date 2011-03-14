@@ -1,11 +1,11 @@
-The DropBox Wiki
+dropWiki: The DropBox Wiki
 ================
 A web.py-based python server for editing, linking, and displaying plain-text files. Built to be self-sufficient - can be run on any system with at least Python 2.5 installed.
 Designed as a light, easy, platform-agnostic way to create and link between notes. I use it with Dropbox,
 
 Requirements
 ------------
-* Python 2.6 or better or Python 2.4 and simplejson
+* Python 2.6 or better or Python 2.5 and simplejson
 * A browser that supports ContentEditable (I've tested with Chrome Dev. Caveat User.)
 
 Installation
