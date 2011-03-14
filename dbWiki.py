@@ -20,11 +20,18 @@ class hello:
             return "Error!"
         action = web.input()['action']
         if action == 'write': return self.write(name)
+        elif action == 'rename': return self.rename(name)
         
     def write(self,name):
         content = web.input()['text']
         f = Files.getFile(name)
         status = f.write(content)
+        return status
+    
+    def rename(self,name):
+        newName = web.input()['name']
+        f = Files.getFile(name)
+        status = f.rename(newName)
         return status
     
     def GET(self, name):
@@ -71,6 +78,7 @@ class FileObject(object):
         return self.content
     
     def write(self, content):
+        #return self._error("Error Test");
         if self.name not in self.items:
             Files.updateItems()
             self.items = Files.items
@@ -88,7 +96,19 @@ class FileObject(object):
             self.handle.close()
             self._addLinks()
             return self._success(self.content)
-            
+    
+    def rename(self, newName):
+        newName = newName.replace('../','').replace('/','');
+        newPath = "%s/%s.txt" % (self.dir, newName)
+        try:
+            os.rename(self.path, newPath)
+        except OSError, e:
+            return self._error("Could not rename file! %s" % e)
+        oldName = self.name
+        self.name = newName
+        self.path = newPath
+        return self._success("Renamed",{'oldURL':oldName,'newURL':newName});
+    
     def _existing(self):
         if os.path.isfile(self.path):
             self.handle = open(self.path)
@@ -116,14 +136,12 @@ class FileObject(object):
     def _addLinks(self):
         self.content = reLink.sub("<a href='\\1'>\\1</a>", self.content,0)
     
-    def _error(self,message):
-        code = {}
+    def _error(self,message,code={}):
         code['Code'] = 0
         code['Message'] = message
-        return code
+        return json.dumps(code)
     
-    def _success(self,message):
-        code = {}
+    def _success(self,message,code={}):
         code['Code'] = 1
         code['Message'] = message
         return json.dumps(code)

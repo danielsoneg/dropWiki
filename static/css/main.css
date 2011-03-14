@@ -7,11 +7,13 @@ body {
     font-size: 18px;
     color: #333;
     white-space: pre-wrap;
-    overflow: scroll;
+    overflow: auto;
     width: 700px;
     min-height: 600px;
     background: #fff;
     margin: 0 auto;
+    -moz-border-radius: 0px 0px 3px 3px;
+    border-radius: 0px 0px 3px 3px;
 }
 
 a {
@@ -20,15 +22,39 @@ a {
 a:hover {
     cursor: pointer !important;
 }
-header {
-    display: block;
+
+#message {
+    display: none;
     padding: 10px;
     font-size: 18px;
     color: #333;
     white-space: pre-wrap;
-    overflow: scroll;
+    overflow: none;
+    width: 700px;
+    background: #fff;
+    margin: 0 auto;
+}
+
+header {
+    display: block;
+    padding: 10px 10px 0px 10px;
+    font-size: 18px;
+    color: #ccc;
+    white-space: pre-wrap;
+    overflow: none;
     width: 700px;    
     background: #fff;
     margin: 0 auto;
-    
+    background: #fff;
+    border-bottom:1px dashed #eee;
+    -moz-border-radius: 3px 3px 0px 0px;
+    border-radius: 3px 3px 0px 0px ;
+}
+h1 {
+    display:inline;
+    color: #444;
+    line-height: 1em;
+    padding: 0 0 0 0;
+    margin: 0;
+    font-weight: normal;
 }
