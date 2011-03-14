@@ -7,12 +7,12 @@ Use it with Dropbox for a text-based  document repository that can be synced and
 Requirements
 ------------
 * Python 2.6 or better or Python 2.5 and simplejson
-* A browser that supports ContentEditable (I've tested with Chrome Dev. Caveat User.)
+* A browser that supports ContentEditable (Tested with Chrome Dev. Caveat User.)
 
 Installation
 ------------
 1. Drop the dbWiki folder inside a folder containing text files.
-2. Run: `python dbWiki.py`
+2. Run: `python dropWiki.py`
 3. open [http://localhost:8080](http://localhost:8080)
 
 Configuration
