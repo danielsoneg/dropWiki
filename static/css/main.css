@@ -20,3 +20,15 @@ a {
 a:hover {
     cursor: pointer !important;
 }
+header {
+    display: block;
+    padding: 10px;
+    font-size: 18px;
+    color: #333;
+    white-space: pre-wrap;
+    overflow: scroll;
+    width: 700px;    
+    background: #fff;
+    margin: 0 auto;
+    
+}
