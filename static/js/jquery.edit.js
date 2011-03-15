@@ -2,7 +2,7 @@ $(document).ready(function() {
     $('a').click(function(){ window.location=$(this).attr('href'); });
     $('#editable').blur(function() {
         var newValue = $(this).html();
-        //alert("Sending: " +newValue);
+        alert("Sending: " +newValue);
         $.ajax({
            type: "POST",
            url: window.location.pathname,
@@ -40,7 +40,7 @@ function renameCallback(data) {
 
 function editCallback(data) {
     data = jQuery.parseJSON(data);
-    //alert(data.Message);
+    alert(data.Message);
     if (data.Code == 1) {
         $('#editable').html(data.Message);
         $('a').click(function(){ window.location=$(this).attr('href'); });        

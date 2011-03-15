@@ -27,6 +27,11 @@ Currently, the script is extremely limited: It hosts text files from the parent 
 * To edit a file, just go to its page, click on the page text, and edit. The content is saved whenever the text loses focus.
 * To create a file, just go to a new page.
 * To link to a file, use: ```Name of the page```.
+* To link to an external URL, just type the URL. It will be linked automatically.
+
+Implementation Notes
+--------------------
+This was designed to be run on a local system and accessed by a single user - there's been very little consideration given to performance or security. This is evident in parts of the code - in several places, solutions have been used because they were easier to implement, not neccessarily better.
 
 Credits
 -------
